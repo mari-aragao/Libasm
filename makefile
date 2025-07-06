@@ -20,7 +20,7 @@ ASMFLAGS = -f elf64
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-all: $(NAME) $(DIR_TEST)/test
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
