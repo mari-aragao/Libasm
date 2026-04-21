@@ -11,7 +11,7 @@ loop:
     cmp al, bl ; compare the bytes
     jne not_equal ; if different, jump to not_equal
 
-    test al, al ; check if al is null (end of string)
+    cmp al, 0 ; check if al is null (end of string)
     je equal ; if it is null, jump to equal
     
     inc rcx ; increment the counter
@@ -22,9 +22,9 @@ equal:
     ret
 
 not_equal:
-    movzx eax, al ; change al to eax (sign-extend)
-    movzx ebx, bl ; change bl to ebx (sign-extend)
-    sub rax, rbx ; subtract the bytes
+    movzx eax, al ; change al to eax (zero-extend)
+    movzx ebx, bl ; change bl to ebx (zero-extend)
+    sub eax, ebx ; subtract the bytes
     ja greater ; if the s1[counter] is greater, jump to greater
     jb lower ; if the s1[counter] is lower, jump to minor
     
