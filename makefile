@@ -30,7 +30,7 @@ $(DIR_OBJ)/%.o: $(DIR_SRC)/%.s
 	$(ASM) $(ASMFLAGS) $< -o $@
 
 $(DIR_TEST)/test: $(NAME) $(DIR_TEST)/main.c
-	$(CC) $(CFLAGS) $^ $(NAME) -o $@
+	$(CC) $(CFLAGS) $(DIR_TEST)/main.c -L. -lasm -o $@
 
 run: $(DIR_TEST)/test
 	@./$(DIR_TEST)/test
